@@ -164,7 +164,7 @@ function MainPage() {
           clearErrors('pdf');
         })
         .catch((err) => {
-          alert('An Error occured uploading your PDF. Please try again.');
+          alert("Une erreur s'est produite lors du téléchargement de votre PDF. Veuillez réessayer.");
           console.error(err);
         });
     };
@@ -172,7 +172,7 @@ function MainPage() {
     try {
       fileReader.readAsArrayBuffer(pdfFile);
     } catch (error) {
-      alert('An Error occured uploading your PDF. Please try again.');
+      alert("Une erreur s'est produite lors du téléchargement de votre PDF. Veuillez réessayer.");
     }
   }
 
@@ -365,7 +365,7 @@ function MainPage() {
         _hover={{ bgColor: 'bg-contrast-xs' }}
         transition='0.1s ease-in-out'
       >
-        <Text fontSize='md'>{coverLetterCount?.toLocaleString()} Cover Letters Generated! 🎉</Text>
+        <Text fontSize='md'>{coverLetterCount?.toLocaleString()} lettres de motivation générées ! 🎉</Text>
       </Box>
       <BorderBox>
         <form
@@ -373,9 +373,9 @@ function MainPage() {
           style={{ width: '100%' }}
         >
 
-            <Heading size={'md'} alignSelf={'start'} mb={3} w='full'>
-              Job Info {isCoverLetterUpdate && <Code ml={1}>Editing...</Code>}
-            </Heading>
+              <Heading size={'md'} alignSelf={'start'} mb={3} w='full'>
+                Informations sur le poste {isCoverLetterUpdate && <Code ml={1}>Édition...</Code>}
+              </Heading>
 
           {showSpinner && <Spinner />}
           {showForm && (
@@ -385,12 +385,12 @@ function MainPage() {
                   id='title'
                   borderRadius={0}
                   borderTopRadius={7}
-                  placeholder='job title'
+                  placeholder='titre du poste'
                   {...register('title', {
-                    required: 'This is required',
+                    required: 'Ce champ est requis',
                     minLength: {
                       value: 2,
-                      message: 'Minimum length should be 2',
+                      message: 'La longueur minimale doit être de 2',
                     },
                   })}
                   onFocus={(e: any) => {
@@ -407,12 +407,12 @@ function MainPage() {
                 <Input
                   id='company'
                   borderRadius={0}
-                  placeholder='company'
+                  placeholder='nom de l\'entreprise'
                   {...register('company', {
-                    required: 'This is required',
+                    required: 'Ce champ est requis',
                     minLength: {
                       value: 1,
-                      message: 'Minimum length should be 1',
+                      message: 'La longueur minimale doit être de 1',
                     },
                   })}
                   disabled={isCoverLetterUpdate}
@@ -423,12 +423,12 @@ function MainPage() {
                 <Input
                   id='location'
                   borderRadius={0}
-                  placeholder='location'
+                  placeholder='lieu'
                   {...register('location', {
-                    required: 'This is required',
+                    required: 'Ce champ est requis',
                     minLength: {
                       value: 2,
-                      message: 'Minimum length should be 2',
+                      message: 'La longueur minimale doit être de 2',
                     },
                   })}
                   disabled={isCoverLetterUpdate}
@@ -439,9 +439,9 @@ function MainPage() {
                 <Textarea
                   id='description'
                   borderRadius={0}
-                  placeholder='copy & paste the job description in any language'
+                  placeholder='copiez et collez la description du poste dans n\'importe quelle langue'
                   {...register('description', {
-                    required: 'This is required',
+                    required: 'Ce champ est requis',
                   })}
                 />
                 <FormErrorMessage>
@@ -455,7 +455,7 @@ function MainPage() {
                   accept='application/pdf'
                   placeholder='pdf'
                   {...register('pdf', {
-                    required: 'Please upload a CV/Resume',
+                    required: 'Veuillez télécharger un CV',
                   })}
                   onChange={(e) => {
                     onFileUpload(e);
@@ -479,15 +479,15 @@ function MainPage() {
                 >
                   <HStack>
                     <FormLabel textAlign='center' htmlFor='pdf'>
-                      <Button size='sm' colorScheme='contrast' onClick={handleFileButtonClick}>
-                        Upload CV
-                      </Button>
+                        <Button size='sm' colorScheme='contrast' onClick={handleFileButtonClick}>
+                          Télécharger le CV
+                        </Button>
                     </FormLabel>
-                    {isPdfReady && <Text fontSize={'sm'}>👍 uploaded</Text>}
+                    {isPdfReady && <Text fontSize={'sm'}>👍 téléchargé</Text>}
                     <FormErrorMessage>{!!formErrors.pdf && formErrors.pdf.message?.toString()}</FormErrorMessage>
                   </HStack>
                   <FormHelperText mt={0.5} fontSize={'xs'}>
-                    Upload a PDF only of Your CV/Resumé
+                      Téléchargez uniquement un PDF de votre CV
                   </FormHelperText>
                 </VStack>
               </FormControl>
@@ -571,7 +571,7 @@ function MainPage() {
                       color: 'text-contrast-lg',
                     }}
                   >
-                    cover letter creativity level
+                    niveau de créativité de la lettre de motivation
                   </FormLabel>
                 </FormControl>
               </VStack>
@@ -602,7 +602,7 @@ function MainPage() {
                       color: 'text-contrast-lg',
                     }}
                   >
-                    include a witty remark at the end of the letter
+                    inclure une remarque spirituelle à la fin de la lettre
                   </FormLabel>
                 </FormControl>
               </VStack>
@@ -615,7 +615,7 @@ function MainPage() {
                   disabled={user === null}
                   type='submit'
                 >
-                  {!isCoverLetterUpdate ? 'Generate Cover Letter' : 'Create New Cover Letter'}
+                  {!isCoverLetterUpdate ? 'Générer la lettre de motivation' : 'Créer une nouvelle lettre de motivation'}
                 </Button>
                 <Text ref={loadingTextRef} fontSize='sm' fontStyle='italic' color='text-contrast-md'>
                   {' '}
@@ -626,7 +626,7 @@ function MainPage() {
           {showJobNotFound && (
             <>
               <Text fontSize='sm' color='text-contrast-md'>
-                Can't find that job...
+                Impossible de trouver cet emploi...
               </Text>
             </>
           )}

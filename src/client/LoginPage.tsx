@@ -64,7 +64,7 @@ export default function Login() {
       if (!lnUserInfo?.token || !user) {
         clearInterval(interval);
         setLnIsLoading(false);
-        alert('Login timed out. Please try again.');
+        alert('La connexion a expiré. Veuillez réessayer.');
       }
     }, 60000);
   };
@@ -77,11 +77,11 @@ export default function Login() {
         ) : (
           <VStack>
             <a href={signInUrl}>
-              <Button leftIcon={<AiOutlineGoogle />}>Google Sign In</Button>
+              <Button leftIcon={<AiOutlineGoogle />}>Connexion Google</Button>
             </a>
             <Button isLoading={lnIsLoading} onClick={handleWalletClick} leftIcon={<BsCurrencyBitcoin />}>
               {' '}
-              Lightning Sign In
+              Connexion Lightning
             </Button>
           </VStack>
         )}

@@ -15,7 +15,7 @@ export default function CoverLetterPage() {
 
   const { id } = useParams();
   if (!id) {
-    return <BorderBox>Error: Cover letter ID is required</BorderBox>;
+    return <BorderBox>Erreur : l'identifiant de la lettre de motivation est requis</BorderBox>;
   }
 
   const {
@@ -41,7 +41,7 @@ export default function CoverLetterPage() {
     try {
       setEditIsLoading(true);
       if (!id) {
-        throw new Error('Cover letter ID is required');
+        throw new Error("L'identifiant de la lettre de motivation est requis");
       }
 
       const editedCoverLetter = await editCoverLetter({ coverLetterId: id, content: textareaState });
@@ -54,7 +54,7 @@ export default function CoverLetterPage() {
       }
     } catch (error) {
       console.error(error);
-      alert('An error occured. Please try again.');
+      alert("Une erreur s'est produite. Veuillez réessayer.");
     }
     setEditIsLoading(false);
   };
@@ -82,7 +82,7 @@ export default function CoverLetterPage() {
         {coverLetter && (
           <HStack>
             <Tooltip
-              label={isEdited && 'Changes Saved!'}
+              label={isEdited && 'Modifications enregistrées !'}
               placement='top'
               hasArrow
               isOpen={isEdited}
@@ -90,17 +90,17 @@ export default function CoverLetterPage() {
               closeOnClick={true}
             >
               <Button size='sm' mr={3} onClick={handleClick} isDisabled={false} isLoading={editIsLoading}>
-                Save Changes
+                Enregistrer les modifications
               </Button>
             </Tooltip>
             <Tooltip
-              label={hasCopied ? 'Copied!' : 'Copy Letter to Clipboard'}
+              label={hasCopied ? 'Copié !' : 'Copier la lettre dans le presse-papiers'}
               placement='top'
               hasArrow
               closeOnClick={false}
             >
               <Button colorScheme='purple' size='sm' mr={3} onClick={onCopy}>
-                Copy
+                Copier
               </Button>
             </Tooltip>
           </HStack>
