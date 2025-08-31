@@ -8,4 +8,5 @@ export default async function mySetupFunction() {
       },
     },
   });
+  document.documentElement.lang = 'fr';
 }
